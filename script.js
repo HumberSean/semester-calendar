@@ -16,15 +16,6 @@
 var firstDay = 6;// The first Monday of the semester.
 var monthIndex = 8;//The DATE month (Jan = 0, Sep = 8).
 var semester = "Fall 2021";//Table caption text.
-//var leapYear = false;
-
-//Static test values for special days. To be deleted.
-//const testDates = ['Sep 4','Sep 18','Oct 9','Nov 2','Nov 3','Nov 5'];
-//const testLabels = ['HOLIDAY','Drop For $','HOLIDAY','CONVOC','CONVOC','GRADES'];
-/* const DATA = {
-	dates: ['Sep 4','Sep 18','Oct 9','Nov 2','Nov 3','Nov 5'],
-	labels: ['HOLIDAY','Drop For $','HOLIDAY','CONVOC','CONVOC','GRADES']
-}; */
 
 window.onload = function() {
 	var newRow;
@@ -32,8 +23,8 @@ window.onload = function() {
 	const monthArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 	const daysArray = [31,28,31,30,31,30,31,31,30,31,30,31];
 	const leapYears = [2024, 2028, 2032, 2036];
-	//const thisYear = new Date().getFullYear();
-	const thisYear = 2024;
+	const thisYear = new Date().getFullYear();
+
 	//Check for Leap Year to update Feb days
 	if (leapYears.indexOf(thisYear) !== -1) {
 		daysArray[1] = 29;
@@ -107,15 +98,6 @@ function updateCaption(){
 					}					
 				}
 
-/* 				if {
-					//Check for special day
-					if (DATA.dates.indexOf(monthArray[monthIndex]+ " " + firstDay)  !== -1){
-						newRow += "<td class='tbl__day'>" + getDay(firstDay) + "<br><span class='daytext'>" + DATA.labels[DATA.dates.indexOf(monthArray[monthIndex]+ " " + firstDay)] + "</span></td>";
-					} else {
-						//Output a regular non-first-of-the-month day
-						newRow += "<td class='tbl__day'>" + getDay(firstDay) + "</td>";
-					}
-				} */
 				newDay += "</td>";//End the day
 				newRow += newDay;//Append day to week
 				firstDay++;
@@ -159,20 +141,13 @@ function updateCaption(){
 		fetch(url)
 			.then(res => res.text())
 			.then(rep => {
-				//console.log(rep);
 				
-				 const jsData = JSON.parse(rep.substring(47).slice(0, -2));
-				//console.log(jsData.table.rows);
-				
-				//var dates = [];
-				//var labels = [];
+				const jsData = JSON.parse(rep.substring(47).slice(0, -2));
+
 				jsData.table.rows.forEach((evnt) => {
 					dateLabelObj.dates.push(evnt.c[1].f);
 					dateLabelObj.labels.push(evnt.c[0].v);
-				})
-				
-				
-				console.log("in func", dateLabelObj);
+				})				
 				
 				//send data to next function
 				makeCalendar(dateLabelObj);
@@ -219,8 +194,7 @@ function updateCaption(){
 
 
 		//Get caption text
-		captionText.innerHTML = inputForm.f__caption.value;
-		
+		captionText.innerHTML = inputForm.f__caption.value;		
 		
 
 		getSheetData(monthIndex);
