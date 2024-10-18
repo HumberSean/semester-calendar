@@ -1,0 +1,87 @@
+/* 
+SEMESTER CALENDAR
+SEAN DOYLE
+V 3.0.0 DECEMBER 2023
+Made weekends narrower and weekdays wider.
+*/
+
+table {
+	border-collapse: collapse;
+	border: 3px outset black;
+}
+h1 {
+	font-family: 'Abril Fatface', cursive;
+}
+caption {
+	font-family: 'Abril Fatface', serif;
+	font-size: 2em;
+}
+th {
+	font-family: 'Abril Fatface', serif;
+}
+td {
+	width: 6em;
+	border: 1px solid black;
+	border-bottom: 3px solid black;
+	font-family: 'Poppins', monospace;
+	vertical-align: top;
+    padding-top: 3px;
+}
+
+/*STYLE THE TABLE*/
+.tbl__week {
+	font-size: 1.75em;
+	font-family: 'Abril Fatface', serif;
+	width: 2.25em;
+	padding-left: 0.5em;
+}
+.tbl__month {
+	font-weight: bold;
+	font-size: 1.25em;
+}
+.tbl__day {
+	text-align: center;
+}
+
+/*STYLING FOR THE WEEKEND*/
+td:nth-child(6){border-right: 5px solid black;}
+td:nth-child(7), td:nth-child(8){
+	background-color: #eeeeee;
+	width: 1.75em;
+}
+
+/*STYLING FOR SPECIAL DAYS (V 3)*/
+.daytext {
+	font-style: italic;
+	font-size: 0.5em;
+}
+
+/*============== V 2 ========*/
+fieldset {
+	width: 30em;
+}
+
+#input__print {
+	padding: 8px 32px;
+	font-size: 2em;
+	
+	display: none;/*  */
+}
+#input__day{ 
+	width: 3em;
+}
+#input__submit {
+	margin-top: 40px;
+}
+#leap__text {
+	text-decoration: underline;
+	color: #0000FF;
+}
+
+/*==== PRINT ====*/
+@media print {
+	#input__print, h1 {
+		display: none !important;
+	}
+}
+/*END PRINT*/

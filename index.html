@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- v 3.0.0 -->
+<!-- SEAN W DOYLE DECEMBER 2023 -->
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="A mini-app for creating a one page semester calendar."/>
+		<meta name="keywords" content="semester, calendar"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="styles.css" rel="stylesheet" type="text/css" />
+		
+		<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+		<title>v 3.0 Semester Calendar</title>
+	</head>
+	<body>	
+		<header>
+			<h1>Semester Calendar</h1>
+		</header>
+
+		<main>
+<!-- INPUT FORM -->
+			<section id="input">
+			<fieldset>
+				<legend>Configure &amp; Customize Your Calendar</legend>
+				<form name="input__form" action="#" method="GET">
+				
+				<!-- CAPTION TEXT -->
+					<label for="input__caption" id="lbl__caption">Caption Text <em>(e.g. Fall Semester 2024):</em></label>
+					<input type="text" id="input__caption" name="f__caption" />
+				
+				<br />
+				<!-- SELECT MONTH -->
+					<label for="input__month" >Select Semester Starting Month:</label>
+					<select name="f__month" id="input__month">
+						<option value="0">January</option>
+						<option value="4">May</option>
+						<option value="8">September</option>
+					</select>
+
+				<br />
+				<!-- START DAY -->
+					<label for="input__day" id="lbl__day">Day of the Month for the First <em>Monday</em> of the Semester:</label>
+					<input type="number" id="input__day" name="f__day" min="1" max="15">
+				<br />
+				<!-- LEAP YEAR -->
+					<input type="checkbox" id="input__leap" name="f__leap" value="LY" />
+					<label for="input__leap" >Check this box for <span id="leap__text" title="2024, 2028, 2032, 2036">Leap Years</span>.</label>
+					
+				<br />
+				<!-- SUBMIT -->
+					<input type="submit" id="input__submit" value="Create My Calendar" />
+				</form>
+			</fieldset>
+			</section>
+			
+<!-- CALENDAR TABLE -->
+			<section id="calendar">
+				<!-- PRINT -->
+				<button id="input__print">PRINT</button>
+				
+				<table>
+					<caption id="tbl__cptn">Fall Semester Caption</caption>
+					<thead><tr><th>Week</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead>
+					<tbody id="tbl__content"></tbody>
+					
+				</table>
+			</section>
+		</main>
+
+	<script src="script.js"></script>
+	</body>
+</html>
